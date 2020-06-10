@@ -27,16 +27,16 @@
     
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">{{ trans('labels.home') }}</a>
+                    <a class="nav-link text-white" href="{{ route('home') }}">{{ trans('labels.home') }}</a>
                 </li>
 
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">{{ trans('labels.signIn') }}</a>
+                    <a class="nav-link text-white" href="{{ route('login') }}">{{ trans('labels.signIn') }}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">{{ trans('labels.signUp') }}</a>
+                    <a class="nav-link text-white" href="{{ route('register') }}">{{ trans('labels.signUp') }}</a>
                 </li>
                 @endguest
 
