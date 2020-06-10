@@ -43,7 +43,7 @@
 
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">{{ trans('labels.profile') }}</a>
+                    <a class="nav-link text-white" href="{{ route('profile.show') }}">{{ trans('labels.profile') }}</a>
                 </li>
 
                 <li class="nav-item">
@@ -52,6 +52,13 @@
 
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">{{ trans('labels.startLesson') }}</a>
+                </li>
+
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="POST">
+                        {{ @csrf_field() }}
+                        <input type="submit" class="btn btn-outline-warning" href="{{ route('logout') }}" value="{{ trans('labels.signOut') }}">
+                    </form>
                 </li>
                 @endauth
             </ul>

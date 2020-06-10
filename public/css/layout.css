@@ -11,3 +11,16 @@
     color: white;
     margin-top: 1em;
 }
+
+.profile-card {
+    max-width: 40em;
+}
+
+.profile-card img {
+    width: 100%;
+    margin: 0 auto 0 auto;
+}
+
+ul.list-group li {
+    padding-top: 0.3em;
+}

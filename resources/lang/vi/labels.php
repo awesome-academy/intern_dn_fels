@@ -7,6 +7,7 @@ return [
     'signIn' => 'Đăng nhập',
     'signInWith' => 'Hoặc, đăng nhập với',
     'signUp' => 'Đăng kí',
+    'signOut' => 'Đăng xuất',
     'profile' => 'Trang cá nhân',
     'wordList' => 'Danh sách từ ',
     'startLesson' => 'Bắt đầu học',
@@ -16,5 +17,17 @@ return [
     'passwordConfirm' => 'Nhập lại mật khẩu',
     'remember' => 'Ghi nhớ đăng nhập',
     'forgetPassword' => 'Quên mật khẩu?',
-    'notMember' => 'Chưa có tài khoản?'
+    'notMember' => 'Chưa có tài khoản?',
+    'save' => 'Lưu',
+    'cancel' => 'Hủy',
+    'profilePage' => [
+        'edit' => 'Chỉnh sửa',
+        'username' => 'Tên người dùng',
+        'email' => 'Email',
+        'birthday' => 'Ngày sinh',
+        'address' => 'Địa chỉ',
+        'gender' => 'Giới tính',
+        'male' => 'Nam',
+        'female' => 'Nữ',
+    ],
 ];
