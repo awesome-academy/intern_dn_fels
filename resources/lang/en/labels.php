@@ -7,6 +7,7 @@ return [
     'signIn' => 'Sign in',
     'signInWith' => 'Or, sign in with',
     'signUp' => 'Sign up',
+    'signOut' => 'Log out',
     'profile' => 'Profile',
     'wordList' => 'Word list',
     'startLesson' => 'Start lesson',
@@ -16,5 +17,17 @@ return [
     'passwordConfirm' => 'Password Confirmation',
     'remember' => 'Remember me',
     'forgetPassword' => 'Forget password?',
-    'notMember' => 'Not a member?'
+    'notMember' => 'Not a member?',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    'profilePage' => [
+        'edit' => 'Edit profile',
+        'username' => 'Username',
+        'email' => 'Email Address',
+        'birthday' => 'Date of Birth',
+        'address' => 'Addresss',
+        'gender' => 'Gender',
+        'male' => 'Male',
+        'female' => 'Female',
+    ],
 ];
