@@ -1,18 +1,22 @@
 @extends('layouts.application.master')
 
 @section('content')
+<link rel="stylesheet" href="{{ url('/css/image-upload.css') }}">
 
 <div class="container">
     <div class="card profile-card mx-auto">
 
-        <form action="{{ route('profile.update') }}" method="POST">
+        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
 
             <div class="card-header text-center">
                 <div class="row">
-                    <div class="col-4">
-                        <img class="card-img-top" src="{{ asset($user->avatar_url) }}">
+                    <div class="col-4 drop-image">
+                        <label for="imageInput">
+                            <img id="imagePreview" class="card-img-top" src="{{ asset($user->avatar_url) }}">
+                        </label>
+                        <input type="file" name="avatar" id="imageInput"/>
                     </div>
 
                     <div class="col-8">
@@ -65,5 +69,8 @@
         </form>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
+<script src="{{ url('/js/image-upload.js') }}"></script>
 
 @endsection
