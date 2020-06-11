@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EditProfileRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -52,6 +53,18 @@ class ProfileController extends Controller
         $user->address = $data['address'];
         $user->gender = $data['gender'];
 
+        // change password
+        if (!empty($data['password'])) {
+            if (Hash::check($data['current_password'], $user->password)) {
+                $user->password = $data['password'];
+            } else {
+                return redirect()->back()->withErrors([
+                    trans('messages.wrongPassword'),
+                ]);
+            }
+        }
+
+        // change profile image
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             $path = $request->file('avatar')->store('');
             $user->avatar_url = '/storage/' . $path;

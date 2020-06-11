@@ -19,4 +19,5 @@ return [
         'title' => 'Đặt lại mật khẩu',
         'send' => 'Gửi link đặt lại mật khẩu',
     ],
+    'wrongPassword' => 'Mật khẩu bạn nhập không đúng',
 ];
