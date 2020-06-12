@@ -19,4 +19,5 @@ return [
         'title' => 'Reset Password',
         'send' => 'Send Password Reset Link',
     ],
+    'wrongPassword' => 'You entered a wrong password',
 ];

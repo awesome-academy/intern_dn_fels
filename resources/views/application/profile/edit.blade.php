@@ -60,6 +60,21 @@
                         </select>
                     </li>
 
+                    <li class="row">
+                        <span class="col-4">{{ trans('labels.passwordCurrent') }}</span>
+                        <input type="password" name="current_password" class="col-8">
+                    </li>
+
+                    <li class="row">
+                        <span class="col-4">{{ trans('labels.passwordNew') }}</span>
+                        <input type="password" name="password" class="col-8">
+                    </li>
+
+                    <li class="row">
+                        <span class="col-4">{{ trans('labels.passwordConfirm') }}</span>
+                        <input type="password" name="password_confirmation" class="col-8">
+                    </li>
+
                     <div class="text-center my-2">
                         <input type="submit" class="btn btn-outline-success mx-4" value="{{ trans('labels.save') }}">
                         <a href="{{ route('profile.show') }}" class="btn btn-outline-danger mx-4">{{ trans('labels.cancel') }}</a>

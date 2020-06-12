@@ -15,6 +15,8 @@ return [
     'name' => 'Name',
     'password' => 'Password',
     'passwordConfirm' => 'Password Confirmation',
+    'passwordCurrent' => 'Current password',
+    'passwordNew' => 'New password',
     'remember' => 'Remember me',
     'forgetPassword' => 'Forget password?',
     'notMember' => 'Not a member?',

@@ -15,6 +15,8 @@ return [
     'name' => 'Tên đăng nhập',
     'password' => 'Mật khẩu',
     'passwordConfirm' => 'Nhập lại mật khẩu',
+    'passwordCurrent' => 'Mật khẩu hiệu tại',
+    'passwordNew' => 'Mật khẩu mới',
     'remember' => 'Ghi nhớ đăng nhập',
     'forgetPassword' => 'Quên mật khẩu?',
     'notMember' => 'Chưa có tài khoản?',
