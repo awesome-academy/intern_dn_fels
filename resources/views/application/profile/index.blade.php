@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="col-8">
-                    <p>{{ $user->introduction }}</p>
+                    <p class="text-justify">{{ $user->introduction }}</p>
                 </div>
             </div>
 

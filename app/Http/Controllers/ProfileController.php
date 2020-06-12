@@ -46,15 +46,16 @@ class ProfileController extends Controller
 
         $data = $request->all();
 
-        var_dump($data);
-
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->date_of_birth = $data['date_of_birth'];
         $user->address = $data['address'];
         $user->gender = $data['gender'];
 
-        if (!empty($data['password'])) { }
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $path = $request->file('avatar')->store('');
+            $user->avatar_url = '/storage/' . $path;
+        }
 
         $user->save();
 
