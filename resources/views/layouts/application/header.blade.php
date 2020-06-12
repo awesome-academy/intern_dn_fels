@@ -51,7 +51,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">{{ trans('labels.startLesson') }}</a>
+                    <a class="nav-link text-white" href="{{ route('courses.index') }}">{{ trans('labels.startLesson') }}</a>
                 </li>
 
                 <li class="nav-item">
