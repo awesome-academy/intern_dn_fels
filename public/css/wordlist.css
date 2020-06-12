@@ -1,0 +1,50 @@
+table {
+    font-family: 'Open Sans';
+}
+
+[class^="word-status-"] {
+    padding: 0.4em;
+    border-radius: 0.3em;
+}
+
+.word-status-unlearned {
+    background-color: #192a56;
+    color: white;
+}
+
+.word-status-learned {
+    background-color: #44bd32;
+    color: white;
+}
+
+.word-status-shortlisted {
+    background-color: #c23616;
+    color: white;
+}
+
+.word-status-outline-unlearned {
+    border: 1px solid #192a56;
+}
+
+.word-status-outline-learned {
+    border: 1px solid #44bd32;
+}
+
+.word-status-outline-shortlisted {
+    border: 1px solid #c23616;
+}
+
+.horizontal-select {
+    border: none;
+    overflow: hidden;
+}
+
+.horizontal-select option {
+    display: inline-block;
+    margin: 0 0.2em 0 0.2em;
+}
+
+
+.horizontal-select:focus {
+    outline: none;
+}

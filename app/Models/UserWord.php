@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserWord extends Model
 {
-    protected $table = ['user_word'];
+    protected $table = 'user_word';
 
     protected $fillable = [
         'status',
