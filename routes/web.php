@@ -24,3 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@show')->name('profile.show');
 Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
+
+Route::prefix('wordlist')->group(function () {
+    Route::get('/', 'WordListController@index')->name('wordlist.index');
+});

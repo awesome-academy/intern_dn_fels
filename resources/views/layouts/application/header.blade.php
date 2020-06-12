@@ -47,7 +47,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">{{ trans('labels.wordList') }}</a>
+                    <a class="nav-link text-white" href={{ route('wordlist.index') }}>{{ trans('labels.wordList') }}</a>
                 </li>
 
                 <li class="nav-item">
