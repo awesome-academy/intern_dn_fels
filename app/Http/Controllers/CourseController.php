@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Repositories\CourseRepository;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,27 @@ class CourseController extends Controller
         return view('application.course.index', [
             'enrolledCourses' => $enrolledCourses,
             'allCourses' => $allCourses,
+        ]);
+    }
+
+    /**
+     * Show course detail
+     * 
+     * @param Request $request
+     * @param int $id
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, int $id)
+    {
+        $course = $this->repository->getDetail($id);
+
+        if (empty($course)) {
+            abort(404);
+        }
+
+        return view('application.course.detail', [
+            'course' => $course,
         ]);
     }
 }

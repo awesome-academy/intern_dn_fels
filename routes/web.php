@@ -31,4 +31,5 @@ Route::prefix('wordlist')->group(function () {
 
 Route::resource('courses', 'CourseController')->only([
     'index',
+    'show',
 ]);

@@ -6,6 +6,8 @@ return [
         'allCourses' => 'All Courses',
         'code' => 'Course code',
         'view' => 'View course',
+        'lessons' => 'Lessons',
+        'start' => 'Start',
     ],
     'status' => [
         'enrolled' => 'Enrolled',
