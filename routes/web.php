@@ -28,3 +28,7 @@ Route::put('/profile', 'ProfileController@update')->name('profile.update');
 Route::prefix('wordlist')->group(function () {
     Route::get('/', 'WordListController@index')->name('wordlist.index');
 });
+
+Route::resource('courses', 'CourseController')->only([
+    'index',
+]);
