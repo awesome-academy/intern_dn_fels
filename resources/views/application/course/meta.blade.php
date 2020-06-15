@@ -26,7 +26,7 @@
             </div>
 
             <div class="action col-12 col-md-2">
-                <a href="#" class="btn btn-outline-primary">{{ trans('course.labels.view') }}</a>
+                <a href="{{ route('courses.show', ['course' => $course->id]) }}" class="btn btn-outline-primary">{{ trans('course.labels.view') }}</a>
             </div>
         </div>
     </div>

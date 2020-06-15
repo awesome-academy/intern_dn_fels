@@ -6,6 +6,8 @@ return [
         'allCourses' => 'Tất cả các lớp',
         'code' => 'Mã lớp',
         'view' => 'Xem chi tiết',
+        'lessons' => 'Bài học',
+        'start' => 'Bắt đầu',
     ],
     'status' => [
         'enrolled' => 'Đã đăng kí',

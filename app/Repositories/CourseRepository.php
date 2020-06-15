@@ -33,4 +33,18 @@ class CourseRepository
 
         return $courses;
     }
+
+    /**
+     * Get one course by given id with all detail information
+     * @param int $id
+     * @return Course
+     */
+    public function getDetail($id)
+    {
+        $course = Course::with('lessons')
+            ->get()
+            ->find($id);
+
+        return $course;
+    }
 }
