@@ -8,7 +8,7 @@
             </div>
     
             <div class="action col-2 text-center">
-                <a href="#" class="btn btn-outline-success">{{ trans('course.labels.start') }}</a>
+                <a href="{{ route('lessons.show', ['lesson' => $lesson]) }}" class="btn btn-outline-success">{{ trans('course.labels.start') }}</a>
             </div>
         </div>
     </div>
