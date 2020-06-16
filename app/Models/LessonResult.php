@@ -8,7 +8,13 @@ class LessonResult extends Model
 {
     protected $fillable = [
         'score',
+        'answers',
+        'user_id',
+        'lesson_id',
     ];
+
+    const CREATED_AT = null;
+    const UPDATED_AT = 'learned_at';
 
     public function lesson()
     {
