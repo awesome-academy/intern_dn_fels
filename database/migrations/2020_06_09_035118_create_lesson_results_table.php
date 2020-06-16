@@ -17,6 +17,7 @@ class CreateLessonResultsTable extends Migration
             $table->foreignId('lesson_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->float('score');
+            $table->json('answers');
             $table->timestamp('learned_at')->useCurrent();
         });
     }

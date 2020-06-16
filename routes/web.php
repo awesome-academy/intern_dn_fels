@@ -36,6 +36,7 @@ Route::resource('courses', 'CourseController')->only([
 
 Route::get('/lessons/{lesson}/test', 'LessonController@test')->name('lessons.test');
 Route::post('/lessons/{lesson}/test', 'LessonController@handleTest')->name('lessons.submit');
+Route::get('/lessons/{lesson}/result', 'LessonController@result')->name('lessons.result');
 Route::resource('lessons', 'LessonController')->only([
     'show',
 ]);

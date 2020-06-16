@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use App\Models\Lesson;
+use App\Models\LessonResult;
 use App\Repositories\LessonRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller
 {
@@ -16,6 +18,7 @@ class LessonController extends Controller
     public function __construct(LessonRepository $repository)
     {
         $this->repository = $repository;
+        $this->middleware('auth');
     }
 
     /**
@@ -63,8 +66,45 @@ class LessonController extends Controller
             }
         }
 
-        return redirect()->route('lessons.show', [
+        LessonResult::create([
+            'user_id' => Auth::user()->id,
+            'lesson_id' => $lesson->id,
+            'score' => $score,
+            'answers' => json_encode($data),
+        ]);
+
+        return redirect()->route('lessons.result', [
             'lesson' => $lesson,
+        ]);
+    }
+
+
+    /**
+     * Show result of the test for given lesson
+     * that done by curretn authencicated user
+     */
+    public function result(Request $request, Lesson $lesson)
+    {
+        $user = Auth::user();
+
+        $result = LessonResult::where('user_id', $user->id)
+            ->where('lesson_id', $lesson->id)
+            ->first();
+
+        if (empty($result)) {
+            abort(404);
+        }
+
+        $history = json_decode($result->answers, true);
+
+        $questions = $this->repository->getTest($lesson->id);
+
+        return view('application.lesson.result', [
+            'questions' => $questions,
+            'lesson' => $lesson,
+            'history' => $history,
+            'score' => $result->score,
+            'total' => count($history),
         ]);
     }
 }
