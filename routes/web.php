@@ -21,9 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', 'ProfileController@show')->name('profile.show');
 Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+Route::get('/profile/{id?}', 'ProfileController@show')->name('profile.show');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
+
+Route::post('/follow', 'ProfileController@follow')->name('profile.follow');
 
 Route::prefix('wordlist')->group(function () {
     Route::get('/', 'WordListController@index')->name('wordlist.index');
