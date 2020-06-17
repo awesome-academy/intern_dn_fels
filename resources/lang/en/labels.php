@@ -31,5 +31,7 @@ return [
         'gender' => 'Gender',
         'male' => 'Male',
         'female' => 'Female',
+        'follow' => 'Follow',
+        'unfollow' => 'Unfollow',
     ],
 ];

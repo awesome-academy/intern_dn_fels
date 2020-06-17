@@ -31,5 +31,7 @@ return [
         'gender' => 'Giới tính',
         'male' => 'Nam',
         'female' => 'Nữ',
+        'follow' => 'Theo dõi',
+        'unfollow' => 'Bỏ theo dõi',
     ],
 ];

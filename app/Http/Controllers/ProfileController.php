@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EditProfileRequest;
+use App\Http\Requests\FollowRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,9 +19,17 @@ class ProfileController extends Controller
      * Show profile page
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Request $request, $id = null)
     {
-        $user = $request->user();
+        if (is_null($id)) {
+            $user = $request->user();
+        } else {
+            $user = User::find($id);
+
+            if (is_null($user)) {
+                abort(404);
+            }
+        }
 
         return view('application.profile.index', [
             'user' => $user,
@@ -73,5 +82,40 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->route('profile.show');
+    }
+
+    /**
+     * Make the user follow another user
+     */
+    public function follow(FollowRequest $request)
+    {
+        $id = $request->get('id');
+
+        /**
+         * @var User $target
+         */
+        $target = User::find($id);
+
+        if (is_null($target)) {
+            return response()->json([
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        /**
+         * @var User $user
+         */
+        $user = $request->user();
+
+        $result = $user->followings()->toggle($id);
+
+        $isAttach = count($result['attached']) > 0;
+        $label = $isAttach ? trans('labels.profilePage.unfollow') : trans('labels.profilePage.follow');
+
+        return response()->json([
+            'message' => 'Success',
+            'followed' => $isAttach,
+            'label' => $label,
+        ]);
     }
 }

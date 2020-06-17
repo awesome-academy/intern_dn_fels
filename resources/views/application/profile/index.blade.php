@@ -18,7 +18,17 @@
 
             <hr>
 
-            <a href="{{ route('profile.edit') }}" class="btn btn-outline-success">{{ trans('labels.profilePage.edit') }}</a>
+            @if (Auth::user()->id === $user->id)
+                <a href="{{ route('profile.edit') }}" class="btn btn-outline-success">{{ trans('labels.profilePage.edit') }}</a>
+            @else
+                <span href="" id="follow-btn" class="btn btn-outline-primary" data-id={{ $user->id }}>
+                    @if (Auth::user()->isFollowing($user->id))
+                        {{ trans('labels.profilePage.unfollow') }}
+                    @else
+                        {{ trans('labels.profilePage.follow') }}
+                    @endif
+                </span>
+            @endif
         </div>
 
         <div class="card-body">
@@ -51,5 +61,8 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ URL::asset('/js/follow.js') }}"></script>
 
 @endsection

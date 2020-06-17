@@ -80,6 +80,11 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'follows', 'follower_id', 'user_id');
     }
 
+    public function isFollowing($userID)
+    {
+        return $this->followings()->where('id', $userID)->exists();
+    }
+
     /**
      * Get all words that relates to current user
      */
