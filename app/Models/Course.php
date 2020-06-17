@@ -33,6 +33,11 @@ class Course extends Model
         return $this->hasMany(UserCourse::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function getIsEnrolledAttribute()
     {
         $user = Auth::user();

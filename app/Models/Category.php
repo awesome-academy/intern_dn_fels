@@ -14,4 +14,9 @@ class Category extends Model
     {
         return $this->hasMany(Word::class);
     }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

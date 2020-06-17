@@ -8,6 +8,7 @@ return [
         'view' => 'View course',
         'lessons' => 'Lessons',
         'start' => 'Start',
+        'category' => 'Category',
     ],
     'status' => [
         'enrolled' => 'Enrolled',

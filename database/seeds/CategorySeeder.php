@@ -13,19 +13,24 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'name' => 'Animals',
+                'name' => 'Nature',
+                'image' => '/storage/category/nature.jpg',
             ],
             [
-                'name' => 'Plants',
+                'name' => 'Office',
+                'image' => '/storage/category/office.jpg',
             ],
             [
-                'name' => 'Jobs',
+                'name' => 'Number',
+                'image' => '/storage/category/number.jpg',
             ],
             [
-                'name' => 'Transportation',
+                'name' => 'Traffic',
+                'image' => '/storage/category/traffic.jpg',
             ],
             [
-                'name' => 'Country',
+                'name' => 'Food',
+                'image' => '/storage/category/food.jpg',
             ]
         ]);
     }

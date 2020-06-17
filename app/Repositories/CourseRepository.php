@@ -47,4 +47,18 @@ class CourseRepository
 
         return $course;
     }
+
+    /**
+     * Get all courses belong to category with given id
+     * 
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getByCategory($categoryID)
+    {
+        $courses = Course::with('category')
+            ->get()
+            ->where('category.id', $categoryID);
+
+        return $courses;
+    }
 }
