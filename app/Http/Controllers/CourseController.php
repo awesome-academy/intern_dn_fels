@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Repositories\CourseRepository;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
 
-    /** @param \App\Repositories\CourseRepository $repository */
-    protected $repository;
+    /** @var CourseRepository $courseRepo */
+    protected $courseRepo;
 
-    public function __construct(CourseRepository $repository)
+    /** @var CategoryRepository $categoryRepo */
+    protected $categoryRepo;
+
+    public function __construct(CourseRepository $courseRepo, CategoryRepository $categoryRepo)
     {
-        $this->repository = $repository;
+        $this->courseRepo = $courseRepo;
+        $this->categoryRepo = $categoryRepo;
         $this->middleware('auth');
     }
 
@@ -28,12 +33,20 @@ class CourseController extends Controller
         /** @var \App\Models\User $user */
         $user = $request->user();
 
-        $enrolledCourses = $this->repository->getEnrolledCourses($user);
-        $allCourses = $this->repository->getAll($user);
+        $enrolledCourses = $this->courseRepo->getEnrolledCourses($user);
+
+        $categories = $this->categoryRepo->all();
+
+        if ($request->has('category')) {
+            $courses = $this->courseRepo->getByCategory($request->input('category'));
+        } else {
+            $courses = [];
+        }
 
         return view('application.course.index', [
             'enrolledCourses' => $enrolledCourses,
-            'allCourses' => $allCourses,
+            'allCourses' => $courses,
+            'categories' => $categories,
         ]);
     }
 
@@ -47,7 +60,7 @@ class CourseController extends Controller
      */
     public function show(Request $request, int $id)
     {
-        $course = $this->repository->getDetail($id);
+        $course = $this->courseRepo->getDetail($id);
 
         if (empty($course)) {
             abort(404);

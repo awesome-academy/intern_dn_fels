@@ -8,6 +8,7 @@ return [
         'view' => 'Xem chi tiết',
         'lessons' => 'Bài học',
         'start' => 'Bắt đầu',
+        'category' => 'Chủ đề',
     ],
     'status' => [
         'enrolled' => 'Đã đăng kí',
