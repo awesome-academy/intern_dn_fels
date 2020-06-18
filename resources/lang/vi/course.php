@@ -9,6 +9,8 @@ return [
         'lessons' => 'Bài học',
         'start' => 'Bắt đầu',
         'category' => 'Chủ đề',
+        'enroll' => 'Tham gia',
+        'leave' => 'Hủy tham gia',
     ],
     'status' => [
         'enrolled' => 'Đã đăng kí',

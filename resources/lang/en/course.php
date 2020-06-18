@@ -9,6 +9,8 @@ return [
         'lessons' => 'Lessons',
         'start' => 'Start',
         'category' => 'Category',
+        'enroll' => 'Enroll',
+        'leave' => 'Leave',
     ],
     'status' => [
         'enrolled' => 'Enrolled',

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ActivityType;
+use App\Helpers\ActivityLog;
 use App\Models\Course;
 use App\Repositories\CourseRepository;
 use App\Repositories\CategoryRepository;
@@ -67,6 +69,34 @@ class CourseController extends Controller
         }
 
         return view('application.course.detail', [
+            'course' => $course,
+        ]);
+    }
+
+    /**
+     * Enroll current user to given course
+     */
+    public function enroll(Request $request, Course $course)
+    {
+        $course->users()->attach($request->user()->id);
+
+        ActivityLog::add(ActivityType::EnrollCourse, $course->name);
+
+        return redirect()->route('courses.show', [
+            'course' => $course,
+        ]);
+    }
+
+    /**
+     * Remove current user from given course
+     */
+    public function leave(Request $request, Course $course)
+    {
+        $course->users()->detach($request->user()->id);
+
+        ActivityLog::add(ActivityType::LeaveCourse, $course->name);
+
+        return redirect()->route('courses.show', [
             'course' => $course,
         ]);
     }

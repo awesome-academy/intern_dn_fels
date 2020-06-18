@@ -30,18 +30,32 @@
                 <p>{{ $course->description }}</p>
             </div>
 
-            <hr>
+            @if ($course->isEnrolled)
+                <form action="{{ route('courses.leave', ['course' => $course]) }}" method="POST">
+                    @csrf
+                    <input type="submit" class="btn btn-outline-danger" value="{{ trans('course.labels.leave') }}">
+                </form>
 
-            <div class="lessons">
-                <h3 class="mb-4">{{ trans('course.labels.lessons') }}</h3>
-                <div class="lesson-list pl-4">
-                    @foreach ($course->lessons as $lesson)
-                        @include('application.lesson.meta', [
-                            'lesson' => $lesson,
-                        ])
-                    @endforeach
+                <hr>
+
+                <div class="lessons">
+                    <h3 class="mb-4">{{ trans('course.labels.lessons') }}</h3>
+                    <div class="lesson-list pl-4">
+                        @foreach ($course->lessons as $lesson)
+                            @include('application.lesson.meta', [
+                                'lesson' => $lesson,
+                            ])
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @else
+                <form action="{{ route('courses.enroll', ['course' => $course]) }}" method="POST">
+                    @csrf
+                    <input type="submit" class="btn btn-outline-success" value="{{ trans('course.labels.enroll') }}">
+                </form>
+
+                <hr>
+            @endif
 
         </div>
     </div>

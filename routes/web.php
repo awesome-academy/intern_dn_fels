@@ -31,6 +31,8 @@ Route::prefix('wordlist')->group(function () {
     Route::get('/', 'WordListController@index')->name('wordlist.index');
 });
 
+Route::post('courses/{course}/enroll', 'CourseController@enroll')->name('courses.enroll');
+Route::post('courses/{course}/leave', 'CourseController@leave')->name('courses.leave');
 Route::resource('courses', 'CourseController')->only([
     'index',
     'show',
