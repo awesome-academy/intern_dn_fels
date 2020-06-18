@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ActivityType;
+use App\Helpers\ActivityLog;
 use App\Http\Requests\EditProfileRequest;
 use App\Http\Requests\FollowRequest;
 use App\Models\User;
@@ -111,6 +113,12 @@ class ProfileController extends Controller
 
         $isAttach = count($result['attached']) > 0;
         $label = $isAttach ? trans('labels.profilePage.unfollow') : trans('labels.profilePage.follow');
+
+        if ($isAttach) {
+            ActivityLog::add(ActivityType::FollowUser, $target->name);
+        } else {
+            ActivityLog::add(ActivityType::UnfollowUser, $target->name);
+        }
 
         return response()->json([
             'message' => 'Success',

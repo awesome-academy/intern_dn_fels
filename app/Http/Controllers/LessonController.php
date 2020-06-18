@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ActivityType;
+use App\Helpers\ActivityLog;
 use App\Models\Answer;
 use App\Models\Lesson;
 use App\Models\LessonResult;
@@ -29,6 +31,8 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
+        ActivityLog::add(ActivityType::StartLesson, $lesson->name);
+
         return view('application.lesson.detail', [
             'lesson' => $lesson,
         ]);
@@ -72,6 +76,8 @@ class LessonController extends Controller
             'score' => $score,
             'answers' => json_encode($data),
         ]);
+
+        ActivityLog::add(ActivityType::FinishLesson, $lesson->name);
 
         return redirect()->route('lessons.result', [
             'lesson' => $lesson,

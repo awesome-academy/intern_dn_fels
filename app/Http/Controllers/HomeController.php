@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('application.home');
+        $activities = \ActivityLog::get(\Auth::user());
+
+        return view('application.home', [
+            'activities' => $activities,
+        ]);
     }
 }
