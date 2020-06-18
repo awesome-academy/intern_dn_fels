@@ -19,6 +19,11 @@ class CreateLessonResultsTable extends Migration
             $table->float('score');
             $table->json('answers');
             $table->timestamp('learned_at')->useCurrent();
+
+            $table->primary([
+                'lesson_id',
+                'user_id',
+            ]);
         });
     }
 

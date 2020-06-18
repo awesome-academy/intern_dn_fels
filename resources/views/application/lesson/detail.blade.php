@@ -16,7 +16,11 @@
             <hr>
 
             <div id="action" class="text text-center">
-                <a href="{{ route('lessons.test', ['lesson' => $lesson]) }}" class="btn btn-outline-danger" target="_blank">{{ trans('lesson.labels.toTest') }}</a>
+                @if ($lesson->isCompleted)
+                    <a href="{{ route('lessons.result', ['lesson' => $lesson]) }}" class="btn btn-outline-success" target="_blank">{{ trans('lesson.labels.viewResult') }}</a>
+                @else
+                    <a href="{{ route('lessons.test', ['lesson' => $lesson]) }}" class="btn btn-outline-danger" target="_blank">{{ trans('lesson.labels.toTest') }}</a>
+                @endif
             </div>
         </div>
     </div>
