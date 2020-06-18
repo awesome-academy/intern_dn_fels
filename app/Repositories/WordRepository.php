@@ -52,4 +52,16 @@ class WordRepository
     {
         return '%' . $keyword . '%';
     }
+
+    /**
+     * Get all words that given user has memorised
+     */
+    public function getLearnedWord(User $user)
+    {
+        $words = $user->words()
+            ->wherePivot('status', 'learned')
+            ->get();
+
+        return $words;
+    }
 }

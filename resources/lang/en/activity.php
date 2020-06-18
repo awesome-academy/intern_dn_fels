@@ -8,5 +8,4 @@ return [
     'startLesson' => ':user has started lesson :target',
     'finishLesson' => ':user has finished lesson :target',
     'learnWord' => ':user has learnt the word :target',
-    'myActivity' => 'My Activity',
 ];
