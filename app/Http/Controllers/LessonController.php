@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Enums\ActivityType;
 use App\Helpers\ActivityLog;
-use App\Models\Answer;
 use App\Models\Lesson;
 use App\Models\LessonResult;
 use App\Repositories\LessonRepository;
@@ -31,7 +30,9 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        ActivityLog::add(ActivityType::StartLesson, $lesson->name);
+        if (!$lesson->isCompleted) {
+            ActivityLog::add(ActivityType::StartLesson, $lesson->name);
+        }
 
         return view('application.lesson.detail', [
             'lesson' => $lesson,
@@ -41,13 +42,20 @@ class LessonController extends Controller
     /**
      * Show test page for lesson with given id
      */
-    public function test(int $id)
+    public function test(Lesson $lesson)
     {
-        $questions = $this->repository->getTest($id);
+        // if user has complete this test
+        if ($lesson->isCompleted) {
+            return redirect()->route('lessons.result', [
+                'lesson' => $lesson,
+            ]);
+        }
+
+        $questions = $this->repository->getTest($lesson->id);
 
         return view('application.lesson.test', [
             'questions' => $questions,
-            'lessonID' => $id,
+            'lessonID' => $lesson->id,
         ]);
     }
 
@@ -60,24 +68,7 @@ class LessonController extends Controller
             '_token',
         ]);
 
-        $score = 0;
-
-        foreach ($data as $questionID => $answerID) {
-            $answer = Answer::find($answerID);
-
-            if (!empty($answer) && $answer->is_correct) {
-                $score += 1;
-            }
-        }
-
-        LessonResult::create([
-            'user_id' => Auth::user()->id,
-            'lesson_id' => $lesson->id,
-            'score' => $score,
-            'answers' => json_encode($data),
-        ]);
-
-        ActivityLog::add(ActivityType::FinishLesson, $lesson->name);
+        $this->repository->saveResult($lesson, $data);
 
         return redirect()->route('lessons.result', [
             'lesson' => $lesson,

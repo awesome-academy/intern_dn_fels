@@ -9,8 +9,12 @@ class UserWord extends Model
     protected $table = 'user_word';
 
     protected $fillable = [
+        'user_id',
+        'word_id',
         'status',
     ];
+
+    public $timestamps = false;
 
     public function user()
     {

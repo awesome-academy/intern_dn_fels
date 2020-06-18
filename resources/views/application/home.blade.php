@@ -15,7 +15,7 @@
                         <ul>
                             @foreach ($activities as $activity)
                                 <li>
-                                    <span class="text-secondary">({{ date('d-m-Y H:m:i', strtotime($activity->done_at)) }})</span> {{ $activity->message }}
+                                    <span class="text-secondary">({{ date('d-m-Y H:i:s', strtotime($activity->done_at)) }})</span> {{ $activity->message }}
                                 </li>
                             @endforeach
                         </ul>

@@ -9,5 +9,7 @@ return [
         'result' => 'Result',
         'backToCourse' => 'Back to course',
         'backToLesson' => 'Back to lesson',
+        'completed' => 'Completed',
+        'viewResult' => 'View Result',
     ],
 ];

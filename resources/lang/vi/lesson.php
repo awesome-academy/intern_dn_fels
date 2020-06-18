@@ -9,5 +9,7 @@ return [
         'result' => 'Kết quả',
         'backToCourse' => 'Quay về khóa học',
         'backToLesson' => 'Quay về bài học',
+        'completed' => 'Đã hoàn thành',
+        'viewResult' => 'Xem kết quả',
     ],
 ];
