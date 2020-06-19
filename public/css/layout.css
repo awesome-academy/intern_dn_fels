@@ -32,3 +32,22 @@ ul.list-group li {
 .text {
     font-family: "Open Sans", sans-serif;
 }
+
+.thumbnail {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.horizontal-scrollable>.row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.horizontal-scrollable>.row>.col-xs-4 {
+    display: inline-block;
+    float: none;
+}
+
+.panel {
+    height: 300px;
+}

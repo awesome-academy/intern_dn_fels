@@ -36,4 +36,16 @@ class ActivityLog
 
         return $activities;
     }
+
+    /**
+     * Get all activities by all given users
+     */
+    public static function all(array $ids)
+    {
+        $activities = Activity::whereIn('user_id', $ids)
+            ->orderBy('done_at', 'desc')
+            ->get();
+
+        return $activities;
+    }
 }
