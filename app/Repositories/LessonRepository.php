@@ -90,4 +90,18 @@ class LessonRepository
 
         $result->save();
     }
+
+    /**
+     * Get all correct answers that belong to given lesson
+     */
+    public function getAllCorrectAnswers($lessonID)
+    {
+        $answers = Answer::with('word')
+            ->with('question')
+            ->where('is_correct', true)
+            ->get()
+            ->where('question.lesson_id', $lessonID);
+
+        return $answers;
+    }
 }

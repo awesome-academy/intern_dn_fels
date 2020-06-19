@@ -13,6 +13,23 @@
                 <p>{{ $lesson->description }}</p>
             </div>
 
+            <div class="item-list row">
+                @foreach ($words as $word)
+                    <div class="col-4">
+                        <div class="w3-card-4 word-card">
+                            <img src="{{ $word->word->image_url }}" alt="{{ $word->word->value }}">
+                            
+                            <div class="w3-container w3-center">
+                                <p>{{ $word->word->value }}</p>    
+                                <hr>
+                                <p>{{ $word->word->definition }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
             <hr>
 
             <div id="action" class="text text-center">
