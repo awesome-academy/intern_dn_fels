@@ -12,22 +12,26 @@
                 </div>
                 <div class="card-body">
                     <div class="followed mb-4">
-                        <div class="text-dark">{{ trans('home.follow', ['number' => count($follows)]) }}</div>
-                        
-                        @foreach ($follows->take(config('constants.homepage.max_user_number')) as $follow)
-                            <div class="fade-image d-inline-block">
-                                <img src="{{ asset($follow->avatar_url) }}" alt="Avatar" class="thumbnail" title="{{ $follow->name }}">
-                            </div>
-                        @endforeach
+                        @if (!empty($follows))
+                            <div class="text-dark">{{ trans('home.follow', ['number' => count($follows)]) }}</div>
+                            
+                            @foreach ($follows->take(config('constants.homepage.max_user_number')) as $follow)
+                                <div class="fade-image d-inline-block">
+                                    <img src="{{ asset($follow->avatar_url) }}" alt="Avatar" class="thumbnail" title="{{ $follow->name }}">
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
 
                     <div class="words">
-                        <div class="text-dark">{{ trans('home.words', ['number' => count($words)]) }}</div>
+                        @if (!empty($words))
+                            <div class="text-dark">{{ trans('home.words', ['number' => count($words)]) }}</div>
 
-                        @foreach ($words->take(config('constants.homepage.max_word_number')) as $word)
-                            <span class="p-3 badge badge-primary">{{ $word->value }}</span>
-                        @endforeach
-                        ...
+                            @foreach ($words->take(config('constants.homepage.max_word_number')) as $word)
+                                <span class="p-3 badge badge-primary">{{ $word->value }}</span>
+                            @endforeach
+                            ...
+                        @endif
 
                     </div>
 
@@ -64,17 +68,18 @@
                     <h2>{{ trans('home.peopleActivity') }}</h2>
                 </div>
                 
-                <div class="card-body panel overflow-auto">
-                    <ul>
-                        @foreach ($followedActivities as $activity)
-                            <li>
-                                <span class="text-secondary">({{ date(config('constants.homepage.datetime_format'), strtotime($activity->done_at)) }})</span> {{ $activity->message }}
-                            </li>
-                        @endforeach
-                    </ul>
+                @if (!empty($followedActivities))
+                    <div class="card-body panel overflow-auto">
+                        <ul>
+                            @foreach ($followedActivities as $activity)
+                                <li>
+                                    <span class="text-secondary">({{ date(config('constants.homepage.datetime_format'), strtotime($activity->done_at)) }})</span> {{ $activity->message }}
+                                </li>
+                            @endforeach
+                        </ul>
 
-                </div>
-                    
+                    </div>
+                @endif
             </div>
         </div>
 

@@ -34,8 +34,11 @@ class LessonController extends Controller
             ActivityLog::add(ActivityType::StartLesson, $lesson->name);
         }
 
+        $words = $this->repository->getAllCorrectAnswers($lesson->id);
+
         return view('application.lesson.detail', [
             'lesson' => $lesson,
+            'words' => $words,
         ]);
     }
 

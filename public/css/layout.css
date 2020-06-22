@@ -51,3 +51,12 @@ ul.list-group li {
 .panel {
     height: 300px;
 }
+
+.word-card {
+    max-width: 300px;
+    margin-bottom: 1em;
+}
+
+.word-card img {
+    width: 100%;
+}
